@@ -1,16 +1,73 @@
-# React + Vite
+# 🚀 Flyer Digital & Consultor Web 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um cartão de visita digital interativo que utiliza Inteligência Artificial para gerar conceitos de sites instantâneos e converter visitantes em clientes.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💡 Sobre o projeto
 
-## React Compiler
+Este projeto não é apenas um portfólio: é uma ferramenta de conversão. Desenvolvido por **Felicio Cavalcante**, funciona como um cartão digital "Premium" onde o potencial cliente interage e recebe, em tempo real, uma proposta comercial e um mockup visual do site, gerados por IA.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+A funcionalidade principal — **Consultoria Automática** — permite que o usuário informe o ramo do negócio (ex: `Pizzaria`) e receba:
 
-## Expanding the ESLint configuration
+- Uma proposta comercial persuasiva e personalizada (texto).
+- Um layout visual (imagem) demonstrando como poderia ser o site do cliente.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Funcionalidades
+
+- ⚡ **Cartão Digital Interativo**: links rápidos, design moderno e animações (Glassmorphism).
+- 🤖 **Consultoria**:
+  - Geração de Texto com `gemini-2.5-flash`.
+  - Geração de Imagem (mockup) com `imagen-4.0`.
+- 📱 **Totalmente Responsivo**: adaptado para celulares, tablets e desktops.
+- 💬 **CTA Inteligente**: botão de WhatsApp que inicia a conversa já com o contexto do orçamento.
+- 🎨 **UI/UX Premium**: tipografia Inter, efeitos visuais, ícones Lucide.
+
+---
+
+## 🛠️ Tecnologias
+
+- React.js (Vite)
+- Tailwind CSS
+- Google Generative AI API (Gemini + Imagen)
+- Lucide React (ícones)
+
+---
+
+## 🚀 Como rodar localmente
+
+### Pré-requisitos
+
+- Node.js (v16+ recomendado)
+- Chave de API do Google AI Studio (veja observação abaixo sobre faturamento para imagens)
+
+### Passos
+
+```bash
+# clone o repositório (substitua pelo seu repositório real)
+git clone https://github.com/seu-usuario/flyer-digital-ia.git
+cd flyer-digital-ia
+
+# instale dependências
+npm install
+
+# rode em modo desenvolvimento
+npm run dev
+
+src/
+├── App.jsx                # Componente Principal (Layout)
+├── App.css                # Estilos globais e animações
+└── components/
+    ├── Header.jsx         # Título e Boas-vindas
+    ├── Profile.jsx        # Foto e Resumo do Dev
+    ├── IaGeneration.jsx   # Lógica da IA (Texto + Imagem)
+    ├── Button.jsx         # Botão CTA (WhatsApp)
+    └── Footer.jsx         # Rodapé e Ícones Tech
+
+
+
+
+
+
