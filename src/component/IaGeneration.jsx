@@ -3,7 +3,7 @@ import { Zap, ArrowRight, Copy, Image as ImageIcon, Key } from "lucide-react";
 
 export default function IaGeneration() {
 
-    const [apiKey, setApiKey] = useState("AIzaSyCTpj5DfVrRBWEGUZdYoa0oC6e6nWLPiYU"); 
+    const [apiKey, setApiKey] = useState(import.meta.env.VITE_GOOGLE_API_KEY || ""); 
     
     const [showKeyInput, setShowKeyInput] = useState(false);
     const [userApiKey, setUserApiKey] = useState("");
@@ -12,7 +12,6 @@ export default function IaGeneration() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    // Verifica se a chave existe ao carregar
     useEffect(() => {
         if (!apiKey) {
             setShowKeyInput(true);
@@ -30,7 +29,6 @@ export default function IaGeneration() {
         }
     };
 
-    // LÓGICA REAL DA IA (Copiada do App.js para cá)
     const generateConcept = async () => {
         const finalKey = apiKey || userApiKey;
 
@@ -58,14 +56,12 @@ export default function IaGeneration() {
         const imagePrompt = `Modern professional website landing page design for a ${businessInput}, UI/UX design, dark theme, high quality, 4k, trending on dribbble, web interface, minimal`;
 
         try {
-            // 1. Chamada de Texto
             const textResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${finalKey}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ contents: [{ parts: [{ text: textPrompt }] }] })
             });
 
-            // 2. Chamada de Imagem
             const imageResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${finalKey}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -84,12 +80,10 @@ export default function IaGeneration() {
             let generatedImage = null;
             let imageErrorMsg = null;
 
-            // Processar Texto
             if (textData.candidates && textData.candidates[0].content) {
                 generatedText = textData.candidates[0].content.parts[0].text;
             }
 
-            // Processar Imagem
             if (imageData.predictions && imageData.predictions[0].bytesBase64Encoded) {
                 generatedImage = imageData.predictions[0].bytesBase64Encoded;
             } else if (imageData.error) {
@@ -128,7 +122,6 @@ export default function IaGeneration() {
                     </div>
                   </div>
         
-                  {/* Input API Key (Condicional) */}
                   {showKeyInput && (
                     <div className="mb-3 bg-slate-950/50 p-3 rounded border border-red-500/30 animate-in fade-in slide-in-from-top-2">
                       <label className="flex items-center gap-2 text-[10px] text-red-300 font-bold mb-1">
@@ -144,7 +137,6 @@ export default function IaGeneration() {
                     </div>
                   )}
         
-                  {/* Quick Chips */}
                   <div className="flex flex-wrap gap-2 mb-3 ">
                     {['⚖️ Advocacia', '🛵 Delivery', '💅 Estética', '🏠 Imobiliária'].map((niche) => (
                       <button
@@ -157,7 +149,6 @@ export default function IaGeneration() {
                     ))}
                   </div>
         
-                  {/* Main Input */}
                   <div className="flex gap-2 mb-4 relative">
                     <input
                       type="text"
@@ -176,7 +167,6 @@ export default function IaGeneration() {
                     </button>
                   </div>
         
-                  {/* Result Display */}
                   {result && (
                     <div className="bg-slate-900/90 rounded-lg border border-slate-700 overflow-hidden animate-in fade-in zoom-in-95 duration-300">
                       <div className="bg-slate-800/50 px-3 py-2 border-b border-slate-700 flex justify-between items-center">
@@ -205,7 +195,6 @@ export default function IaGeneration() {
         
                   {loading && (
                     <div className="text-center py-4">
-                        {/* Simulação do typing indicator com CSS inline ou classe se tiver no css global */}
                         <p className="text-slate-500 text-[10px] mt-2">Processando análise de mercado...</p>
                     </div>
                   )}

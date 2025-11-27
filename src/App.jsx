@@ -10,22 +10,20 @@ import Footer from './component/Footer';
 
 export default function App() {
   // Estados da Aplicação
-  const [apiKey, setApiKey] = useState("AIzaSyCTpj5DfVrRBWEGUZdYoa0oC6e6nWLPiYU");
+  const [apiKey, setApiKey] = useState(import.meta.env.VITE_GOOGLE_API_KEY || "");
   const [userApiKey, setUserApiKey] = useState("");
   const [businessInput, setBusinessInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState(null); // { text: string, image: string | null }
+  const [result, setResult] = useState(null); 
   const [error, setError] = useState("");
   const [showKeyInput, setShowKeyInput] = useState(false);
 
-  // Verifica se a chave foi configurada inicialmente
   useEffect(() => {
     if (!apiKey) {
       setShowKeyInput(true);
     }
   }, [apiKey]);
 
-  // Função para setar nicho rápido
   const handleNicheClick = (niche) => {
     setBusinessInput(niche);
   };
